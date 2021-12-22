@@ -1,0 +1,85 @@
+package javaapplication2;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class JavaApplication2 {
+
+    public static void main(String[] args) {
+    
+double gun1,gun2,gun3,gun4,gun5,gun6,ort,minsaat, saatlik, netmaas;
+String ad;
+Scanner k=new Scanner(System.in);
+System.out.print("Adını gir:");
+ad = k.next();
+System.out.print("Pazatesi çalışma saatini gir:");
+gun1 = k.nextDouble();
+System.out.print("Salı çalışma  saatini gir:");
+gun2 = k.nextDouble();
+System.out.print("Çarşamba çalışma  saatini gir:");
+gun3 = k.nextDouble();
+System.out.print("Perşembe çalışma saatini gir:");
+gun4 = k.nextDouble();
+System.out.print("Cuma çalışma saatini gir:");
+gun5 = k.nextDouble();
+System.out.print("Cumartesi çalışma  saatini gir:");
+gun6 = k.nextDouble();
+minsaat = 40;
+ort= (gun1+gun2+gun3+gun4+gun5+gun6);
+saatlik = 23.28;
+netmaas = ort*saatlik;
+try {
+    File yaz=new File("C:\\Kodlarrrr\\"  + ad + ".txt");
+    if(yaz.exists()) {
+        System.out.print("dosya zaten var ve üzerine yazıldı");
+        FileWriter as=new FileWriter("C:\\Kodlarrrr\\"  + ad + ".txt");
+        if(ort<minsaat) {
+            as.write("Selam!"+ " " + ad + " "+ "Toplam çalışma saatin"+ " "+ ort + " "+ "oldugu için minimum çalışma saatinin altına kaldın ve işten çıkarıldın");
+            as.close();
+        }
+        else if(ort == minsaat) {
+            as.write("Selam!"+ " " + ad + " "+ "Toplam çalışma saatin"+ " "+ ort + " "+ "Minimum saati doldurdun,haftalık maaşın: 2092.8 TL");
+            as.close();
+
+        }
+        else {
+            as.write("Selam!"+ " " + ad + " "+ "Toplam çalışma saatin"+ " "+ ort + " "+ "Fazla mesai yaptıgın için arttırılmış haftalık maaşın:" + netmaas+ "TL");
+            as.close();
+        }
+    }
+    else {
+        yaz.createNewFile();
+        System.out.print("Dosya olusturuldu");
+       FileWriter as=new FileWriter("C:\\Kodlarrrr\\"  + ad + ".txt");
+
+         if(ort<minsaat) {
+            as.write("Selam"+ " " + ad + "! "+ "Toplam çalışma saatin"+ " "+ ort + " "+ "oldugu için minimum çalışma saatinin altına kaldın ve işten çıkarıldın");
+            as.close();
+        }
+        else if(ort == minsaat) {
+            as.write("Selam"+ " " + ad + "! "+ "Toplam çalışma saatin"+ " "+ ort + " "+ "Minimum saati doldurdun, haftalık maaşın: 2092.8 TL");
+            as.close();
+
+        }
+        else {
+            as.write("Selam"+ " " + ad + "! "+ "Toplam çalışma saatin"+ " "+ ort + " "+ "Fazla mesai yaptıgın için arttırılmış haftalık maaşın:" + netmaas+ "TL");
+            as.close();
+        }
+        
+        
+    }
+}
+    
+    
+    catch(Exception e)
+            {
+            System.out.print("hata");
+            }
+		
+		
+		
+	}
+
+}
